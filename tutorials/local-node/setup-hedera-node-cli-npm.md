@@ -2,7 +2,7 @@
 
 Hedera is an open-source, public, proof-of-stake network. Its network services offer low and fixed fees, 10k TPS, and instant transaction finality. Learn more about [the Hedera platform and how it works](https://hedera.com/how-it-works).
 
-In this tutorial, we will adopt, set up, and run a Hedera node locally using the [@hashgraph/hedera-local](https://www.npmjs.com/package/@hashgraph/hedera-local) NPM Command Line Interface (CLI) tool with `docker compose`.
+This tutorial demonstrates how to set up and run a Hedera node locally using the [@hashgraph/hedera-local](https://www.npmjs.com/package/@hashgraph/hedera-local) npm command line interface (CLI) tool with `docker compose`.
 
 > This tutorial is based on the [Hedera Local Node README documentation](https://github.com/hashgraph/hedera-local-node).
 
