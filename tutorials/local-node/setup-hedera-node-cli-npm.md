@@ -1,31 +1,32 @@
-# Set Up a Hedera Local Node using the NPM CLI
+# Set Up a Hedera Local Node using the npm CLI
 
 Hedera is an open-source, public, proof-of-stake network. Its network services offer low and fixed fees, 10k TPS, and instant transaction finality. Learn more about [the Hedera platform and how it works](https://hedera.com/how-it-works).
 
-This tutorial demonstrates how to set up and run a Hedera node locally using the [@hashgraph/hedera-local](https://www.npmjs.com/package/@hashgraph/hedera-local) npm command line interface (CLI) tool with `docker compose`.
+This tutorial demonstrates how to set up and run a Hedera node locally using the [@hashgraph/hedera-local](https://www.npmjs.com/package/@hashgraph/hedera-local) npm command line interface (CLI) tool.
 
 > This tutorial is based on the [Hedera Local Node README documentation](https://github.com/hashgraph/hedera-local-node).
 
-> Already familiar with using a cloud service? Check out the other options for setting up and running the Hedera node locally. See the [Useful resources section](https://docs.google.com/document/d/1gWKWF-fzc0VlKhRhjZhecatHnTXkHy9RQeKfD6Klnak/edit#heading=h.5zlu1j5vb4rk) for more information.
+> Already have a preferred cloud service? See [Useful Resources](#useful-resources) for more information on alternative methods for running a Hedera node locally.
 
 ## Prerequisites
 
-To get started with this tutorial, ensure that you have the following software installed:
+Before continuing, ensure that you have the following software installed:
 
 * [Node.js](https://nodejs.org/) >= v14.x (Check version: `node -v`)
 * NPM >= v6.14.17 (Check version: `npm -v`)
 * [Docker](https://www.docker.com/) >= v20.10.x (Check version: `docker -v`)
 * [Docker Compose](https://docs.docker.com/compose/) >= v2.12.3 (Check version: `docker compose version`)
-* Hardware: Minimum 16GB RAM
+
+Hardware: Minimum 16GB RAM
 
 ### Installation
 
-* Node.js and NPM: Refer to the [official installation guide](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs).
-* Docker: See [Docker Setup Guide](https://github.com/hashgraph/hedera-local-node?tab=readme-ov-file#note) to get docker up and running (note: specific instructions may vary based on the OS).
+* Node.js and npm: Refer to the [official installation guide](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs).
+* Docker: See [Docker Setup Guide](https://github.com/hashgraph/hedera-local-node?tab=readme-ov-file#note) to get Docker up and running on your operating system.
 
 ## Getting Started
 
-Clone the GitHub repo, navigate to the project folder using the commands below;
+Clone the GitHub repo and navigate to the project folder using the commands below:
 
 ```js
 git clone https://github.com/hashgraph/hedera-local-node.git 
@@ -34,7 +35,7 @@ cd hedera-local-node
 
 ### Install CLI Tool
 
-The command below can be used to install the official release from the [NPM](https://www.npmjs.com/package/@hashgraph/hedera-local) repository.
+Install the `@hashgraph/hedera-local` CLI tool globally by running the following command:
 
 ```js
 npm install @hashgraph/hedera-local -g
