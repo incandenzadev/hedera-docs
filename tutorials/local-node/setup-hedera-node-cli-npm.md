@@ -4,8 +4,6 @@ Hedera is an open-source, public, proof-of-stake network. Its network services o
 
 This tutorial demonstrates how to set up and run a Hedera node locally using the [@hashgraph/hedera-local](https://www.npmjs.com/package/@hashgraph/hedera-local) npm command line interface (CLI) tool.
 
-> This tutorial is based on the [Hedera Local Node README documentation](https://github.com/hashgraph/hedera-local-node).
-
 > Already have a preferred cloud service? See [Useful Resources](#useful-resources) for more information on alternative methods for running a Hedera node locally.
 
 ## Prerequisites
@@ -13,27 +11,22 @@ This tutorial demonstrates how to set up and run a Hedera node locally using the
 Before continuing, ensure that you have the following software installed:
 
 * [Node.js](https://nodejs.org/) >= v14.x (Check version: `node -v`)
-* NPM >= v6.14.17 (Check version: `npm -v`)
+* npm >= v6.14.17 (Check version: `npm -v`)
 * [Docker](https://www.docker.com/) >= v20.10.x (Check version: `docker -v`)
 * [Docker Compose](https://docs.docker.com/compose/) >= v2.12.3 (Check version: `docker compose version`)
 
-Hardware: Minimum 16GB RAM
-
-### Installation
-
-* Node.js and npm: Refer to the [official installation guide](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs).
-* Docker: See [Docker Setup Guide](https://github.com/hashgraph/hedera-local-node?tab=readme-ov-file#note) to get Docker up and running on your operating system.
+Hardware: minimum 16GB RAM
 
 ## Getting Started
 
-Clone the GitHub repo and navigate to the project folder using the commands below:
+Clone the repo and navigate to the project directory using the commands below:
 
 ```js
 git clone https://github.com/hashgraph/hedera-local-node.git 
 cd hedera-local-node
 ```
 
-### Install CLI Tool
+### Install the CLI Tool
 
 Install the `@hashgraph/hedera-local` CLI tool globally by running the following command:
 
@@ -41,38 +34,25 @@ Install the `@hashgraph/hedera-local` CLI tool globally by running the following
 npm install @hashgraph/hedera-local -g
 ```
 
-> **Note: This version may not reflect the most recent changes to the main branch of this repository. It also uses a baked in version of the Docker Compose definitions and will not reflect any local changes made to the repository.**
+> The official npm release may not reflect the most recent changes to the main branch of this repository. It uses a baked-in version of the Docker Compose definitions and will not reflect any local changes made to the repository.
 
-#### Local development Installation
+### Install Dependencies
 
-Install the dependencies locally.
+Install the necessary dependencies in the `hedera-local-node` directory:
 
 ```js
 npm install && npm install -g
 ```
 
-### Running the Node:
+## Running the Node
 
-Start the local node (Note: Ensure Docker is running):
+Make sure Docker is running on your device, then start the local node:
 
 ```js
 npm run start
 ```
 
-**You can pass the following CLI flags, this would be used later in the following sections:**
-
-```js
---d / --detached - Start the local node in detached mode.
---h / --host - Override the default host.
-```
-
-**Other NPM commands:**
-
-* `npm run restart` to restart the network
-* `npm run stop` to stop the network
-* `npm run generate-accounts` to generate new accounts - network must be running first
-
-**You should see the following response in the terminal:**
+You should see the following response in the terminal:
 
 ```bash
 hedera-local-node % npm run start
@@ -111,7 +91,7 @@ To generate default accounts and start the local node in detached mode, use the 
 npm run start -- -d
 ```
 
-**You should see the following response in the terminal:**
+You should see the following response in the terminal:
 
 ```bash
 hedera-local-node % npm run start -- -d
@@ -159,28 +139,25 @@ hedera-local-node % npm run start -- -d
 
 ![Running Hedera Node on Terminal](../../.gitbook/assets/01-hedera-local-node-terminal-npm-cli-running.png)
 
-## Verify Running Node
+Other npm commands:
 
-There are different ways to verify that a node is running;
+* `npm run restart` to restart the network
+* `npm run stop` to stop the network
+* `npm run generate-accounts` to generate new accounts—network must be running first
 
-* Check Block Number using Hashscan Block Explorer
-* Send cURL request to `getBlockNumber`
+## Verify Local Node is Running
 
-### Check Block Number using Hashscan Block Explorer
-
-Visit the local mirror node explorer endpoint ([http://localhost:8080/devnet/dashboard](http://localhost:8080/devnet/dashboard)) in your web browser. Ensure that `LOCALNET` is selected, as this will show you the Hedera network running within your local network.
-
-Select any of the listed blocks to view the details (Consensus, Block, Transaction Hash, etc) for a particular block.
+To verify that your node is running, visit the local mirror node explorer endpoint ([http://localhost:8080/](http://localhost:8080/) in your browser. Select Localnet from the dropdown menu to see the Hedera network transactions on your local device. You can select any of the listed blocks to view the details (Consensus, Block, Transaction Hash, etc) for a particular block.
 
 ![Hedera Explorer - View LOCALNET](../../.gitbook/assets/02-hedera-local-node-terminal-view-localnet.png)
 
 ![Hedera Explorer - View LOCALNET Details](../../.gitbook/assets/03-hedera-local-node-terminal-view-localnet-details.png)
 
-### Send cURL request to getBlockNumber
+### Send cURL Request to Testnet
 
-Let's verify that we are able to interact with Hedera Testnet using JSON-RPC by issuing an `eth_getBlockByNumber` JSON-RPC request.
+To confirm that you're able to interact with the Hedera Testnet using JSON-RPC, try issuing an `eth_getBlockByNumber` JSON-RPC request.
 
-**Enter the curl command below:**
+Run the following command in your terminal:
 
 ```bash
   curl http://localhost:7546/ \
@@ -189,7 +166,7 @@ Let's verify that we are able to interact with Hedera Testnet using JSON-RPC by 
   --data '{"method":"eth_getBlockByNumber","params":["latest",false],"id":1,"jsonrpc":"2.0"}'
 ```
 
-**You should get the following response:**
+You should get the following response:
 
 ```bash
 curl http://localhost:7546/ \
@@ -199,9 +176,9 @@ curl http://localhost:7546/ \
 {"result":{"timestamp":"0x667c000e","difficulty":"0x0","extraData":"0x","gasLimit":"0xe4e1c0","baseFeePerGas":"0xa54f4c3c00","gasUsed":"0x0","logsBloom":"0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000","miner":"0x0000000000000000000000000000000000000000","mixHash":"0x0000000000000000000000000000000000000000000000000000000000000000","nonce":"0x0000000000000000","receiptsRoot":"0x0000000000000000000000000000000000000000000000000000000000000000","sha3Uncles":"0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347","size":"0x93d","stateRoot":"0x0000000000000000000000000000000000000000000000000000000000000000","totalDifficulty":"0x0","transactions":[],"transactionsRoot":"0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421","uncles":[],"withdrawals":[],"withdrawalsRoot":"0x0000000000000000000000000000000000000000000000000000000000000000","number":"0x1604","hash":"0xfef0932ffb429840fe765d6d87c77425e2991326ddae6747dcce5c929c69ef38","parentHash":"0xef1ef331626f4f50ba2541d440b45cac51c5d8d6b4c46407a00c15d593c31e96"},"jsonrpc":"2.0","id":1}%    
 ```
 
-### Troubleshooting
+## Troubleshooting
 
-Find below some common errors and how to troubleshoot them:
+The section below details common errors and how to resolve them.
 
 **Error: Node cannot start properly because necessary ports are in use!**
 
@@ -231,14 +208,12 @@ hedera-local-node % npm run start -- -d
 [Hedera-Local-Node] ERROR (DockerService) [✘] [✘] Node cannot start properly because necessary ports are in use!
 ```
 
-**Fix**
-
 * **Option 1:** Instead of starting another instance of the network, use the `npm run generate-accounts` to generate new accounts for an already started network.
 * **Option 2:** If you get the above error, ensure that you terminate any existing Docker processes for the local node, and also any other processes that are bound to these port numbers, before running the npm start command. You can run `docker compose down -v`, `git clean -xfd`, `git reset --hard` to fix this.
 
 ## Useful Terms
 
-For an in depth explanation of the different terms below, see the [glossary documentation](https://docs.hedera.com/hedera/support-and-community/glossary).
+For an in-depth explanation of the different terms below, see the [glossary documentation](https://docs.hedera.com/hedera/support-and-community/glossary).
 
 * Accounts list (ED25519 keys)
 * Private keys
@@ -248,10 +223,6 @@ For an in depth explanation of the different terms below, see the [glossary docu
 
 Want to learn how to deploy smart contracts on Hedera? Visit the guide on how to [Deploy a Smart Contract Using Hardhat and Hedera JSON-RPC Relay](https://docs.hedera.com/hedera/tutorials/smart-contracts/deploy-a-smart-contract-using-hardhat-hedera-json-rpc-relay).
 
-## Summary
-
-In this tutorial, we successfully set up and ran the Hedera local node using the [NPM CLI](https://www.npmjs.com/package/@hashgraph/hedera-local) tool, generated default accounts and solved common errors encountered when running the local node.
-
 ## Useful Resources
 
 * Set and Run a Hedera Node using the [Local Hedera Package](https://github.com/hashgraph/hedera-local-node?tab=readme-ov-file#using-hedera-local).
@@ -259,4 +230,4 @@ In this tutorial, we successfully set up and ran the Hedera local node using the
 * Use [local network variables](https://github.com/hashgraph/hedera-local-node?tab=readme-ov-file#network-variables) to interact with Consensus and Mirror Nodes
 * Using [Grafana and Prometheus Endpoints](https://github.com/hashgraph/hedera-local-node?tab=readme-ov-file#grafana--prometheus).
 
-<table data-card-size="large" data-view="cards"><thead><tr><th align="center"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td align="center"><p>Writer: Owanate, Technical Writer</p><p><a href="https://github.com/owans">GitHub</a> | <a href="https://https/medium.com/@owanateamachree">Medium</a></p></td><td><a href="https://medium.com/@owanateamachree">https://medium.com/@owanateamachree</a></td></tr><tr><td align="center"><p>Editor: Krystal, Technical Writer</p><p><a href="https://github.com/theekrystallee">GitHub</a> | <a href="https://twitter.com/theekrystallee">Twitter</a></p></td><td><a href="https://twitter.com/theekrystallee">https://twitter.com/theekrystallee</a></td></tr></tbody></table>
+<table data-card-size="large" data-view="cards"><thead><tr><th align="center"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td align="center"><p>Writer: Owanate, Technical Writer</p><p><a href="https://github.com/owans">GitHub</a> | <a href="https://medium.com/@owanateamachree">Medium</a></p></td><td><a href="https://medium.com/@owanateamachree">https://medium.com/@owanateamachree</a></td></tr><tr><td align="center"><p>Editor: Krystal, Technical Writer</p><p><a href="https://github.com/theekrystallee">GitHub</a> | <a href="https://twitter.com/theekrystallee">Twitter</a></p></td><td><a href="https://twitter.com/theekrystallee">https://twitter.com/theekrystallee</a></td></tr></tbody></table>
