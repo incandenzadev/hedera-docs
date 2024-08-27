@@ -15,34 +15,11 @@ Hardware requirements: minimum 16 GB RAM
 
 ## Getting Started
 
-Clone the `hedera-local-node` repo and navigate to the project directory:
-
-```js
-git clone https://github.com/hashgraph/hedera-local-node.git 
-cd hedera-local-node
-```
-
-### Install the CLI Tool
-
-Install the `@hashgraph/hedera-local` CLI tool globally:
-
-```js
-npm install @hashgraph/hedera-local -g
-```
-
-> Note that the official npm release may not reflect the most recent changes to the main branch of this repository.
-
-### Install Dependencies
-
-Install the necessary dependencies in the `hedera-local-node` directory:
-
-```js
-npm install && npm install -g
-```
-
 ### Configure Docker
 
-Open Docker and navigate to **Settings > General**. Make sure that the VirtioFS file sharing implementation is selected.
+The `hedera-local` tool uses Docker behind the scenes, so you'll need to configure Docker according to the following specifications to run a local node.
+
+Open Docker and navigate to **Settings > General**. Make sure that the **VirtioFS** file sharing implementation is selected.
 
 In **Settings > Resources**, ensure the following minimum resources are available:
 
@@ -53,26 +30,94 @@ In **Settings > Resources**, ensure the following minimum resources are availabl
 
 In **Settings > Advanced**, make sure that **Allow the default Docker sockets to be used (requires password)** is checked.
 
-## Running the Node
+### Install the `hedera-local` CLI Tool
 
-With Docker running on your device, start the local node:
+To run a local node using the `hedera-local` CLI tool, you can either install it globally via npm, or else run it locally from a clone of [the `hedera-local-node` GitHub repo](https://github.com/hashgraph/hedera-local-node). The [npm installation](#npm-installation) is generally recommended for most users unless you specifically need to test the latest changes to the repo, in which case you should follow the [local installation instructions](#local-development-installation).
+
+#### Global npm Installation
+
+Run the following command to install the `@hashgraph/hedera-local` CLI tool:
 
 ```js
-npm run start
+npm install @hashgraph/hedera-local -g
 ```
+
+Now you can use [the `hedera` commands](#hedera-commands) when [running your node](#running-the-node).
+
+#### Local Development Installation
+
+Clone the `hedera-local-node` repo and navigate to the project directory:
+
+```js
+git clone https://github.com/hashgraph/hedera-local-node.git 
+cd hedera-local-node
+```
+
+Install the necessary dependencies in the `hedera-local-node` directory:
+
+```js
+npm install && npm install -g
+```
+
+Now you can use `npm run start`, `npm run restart`, and `npm run stop` to start, restart, and stop the node, respectively.
+
+## Running the Node
+
+Note: This section assumes you've installed `hedera-local` globally via npm. If you're running it from a local repo, you must replace `hedera *` with `npm run *` and add `--` before any optional flags. For example, `hedera start -d` would be `npm run start -- -d`.
+
+### `hedera` Commands
+
+Run `hedera` in your terminal to see the list of commonly used commands and options:
+
+```bash
+$ hedera
+hedera <command>
+
+Commands:
+  hedera start [accounts]              Starts the local hedera network.
+  hedera stop                          Stops the local hedera network and delete
+                                       all the existing data.
+  hedera restart [accounts]            Restart the local hedera network.
+  hedera generate-accounts [accounts]  Generates the specified number of
+                                       accounts [default: 10]
+  hedera debug [timestamp]             Parses and prints the contents of the
+                                       record file that has been created during
+                                       the selected timestamp.
+
+Options:
+  --help     Show help                                                 [boolean]
+  --version  Show version number                                       [boolean]
+```
+
+### Start the Node
+
+Run `hedera start` to start the local node.
 
 You should see the following response in the terminal:
 
 ```bash
-hedera-local-node % npm run start
+[Hedera-Local-Node] INFO (StateController) [✔︎] Starting start procedure!
+[Hedera-Local-Node] INFO (InitState) ⏳ Making sure that Docker is started and it is correct version...
+[Hedera-Local-Node] INFO (DockerService) ⏳ Checking docker compose version...
+[Hedera-Local-Node] INFO (DockerService) ⏳ Checking docker resources...
+[Hedera-Local-Node] INFO (InitState) ⏳ Setting configuration with latest images on host 127.0.0.1 with dev mode turned off using turbo mode in single node configuration...
+[Hedera-Local-Node] INFO (InitState) [✔︎] Local Node Working directory set to /Users/sycamore/Library/Application Support/hedera-local.
+[Hedera-Local-Node] INFO (InitState) [✔︎] Hedera JSON-RPC Relay rate limits were disabled.
+[Hedera-Local-Node] INFO (InitState) [✔︎] Needed environment variables were set for this configuration.
+[Hedera-Local-Node] INFO (InitState) [✔︎] Needed bootsrap properties were set for this configuration.
+[Hedera-Local-Node] INFO (InitState) [✔︎] Needed bootsrap properties were set for this configuration.
+[Hedera-Local-Node] INFO (InitState) [✔︎] Needed mirror node properties were set for this configuration.
+[Hedera-Local-Node] INFO (StartState) ⏳ Starting Hedera Local Node...
 
-> @hashgraph/hedera-local@2.26.2 restart
-> npm run build && node ./build/index.js restart
+```
 
+### Restart the Node
 
-> @hashgraph/hedera-local@2.26.2 build
-> rimraf ./build && tsc
+Run `hedera restart` to restart the local node.
 
+You should see the following response in the terminal:
+
+```bash
 [Hedera-Local-Node] INFO (StateController) [✔︎] Starting restart procedure!
 [Hedera-Local-Node] INFO (CleanUpState) ⏳ Initiating clean up procedure. Trying to revert unneeded changes to files...
 [Hedera-Local-Node] INFO (CleanUpState) [✔︎] Clean up of consensus node properties finished.
@@ -83,9 +128,8 @@ hedera-local-node % npm run start
 [Hedera-Local-Node] INFO (InitState) ⏳ Making sure that Docker is started and it is correct version...
 [Hedera-Local-Node] INFO (DockerService) ⏳ Checking docker compose version...
 [Hedera-Local-Node] INFO (DockerService) ⏳ Checking docker resources...
-[Hedera-Local-Node] WARNING (DockerService) [!] Port 3000 is in use.
 [Hedera-Local-Node] INFO (InitState) ⏳ Setting configuration with latest images on host 127.0.0.1 with dev mode turned off using turbo mode in single node configuration...
-[Hedera-Local-Node] INFO (InitState) [✔︎] Local Node Working directory set to /Users/owanate/Library/Application Support/hedera-local.
+[Hedera-Local-Node] INFO (InitState) [✔︎] Local Node Working directory set to /Users/sycamore/Library/Application Support/hedera-local.
 [Hedera-Local-Node] INFO (InitState) [✔︎] Hedera JSON-RPC Relay rate limits were disabled.
 [Hedera-Local-Node] INFO (InitState) [✔︎] Needed environment variables were set for this configuration.
 [Hedera-Local-Node] INFO (InitState) [✔︎] Needed bootsrap properties were set for this configuration.
@@ -94,67 +138,23 @@ hedera-local-node % npm run start
 [Hedera-Local-Node] INFO (StartState) ⏳ Starting Hedera Local Node...
 ```
 
-### Detached Mode
+### Stop the Node
 
-Append the `-- -d` flag to generate default accounts and start the local node in detached mode:
+To terminate your local node, run:
 
-```js
-npm run start -- -d
+```bash
+hedera stop
 ```
 
 You should see the following response in the terminal:
 
 ```bash
-hedera-local-node % npm run start -- -d
-
-> @hashgraph/hedera-local@2.26.2 start
-> npm run build && node ./build/index.js start -d
-
-
-> @hashgraph/hedera-local@2.26.2 build
-> rimraf ./build && tsc
-[Hedera-Local-Node] INFO (StartState) [✔︎] Hedera Local Node successfully started!
-[Hedera-Local-Node] INFO (NetworkPrepState) ⏳ Starting Network Preparation State...
-[Hedera-Local-Node] INFO (NetworkPrepState) [✔︎] Imported fees successfully!
-[Hedera-Local-Node] INFO (NetworkPrepState) [✔︎] Topic was created!
-[Hedera-Local-Node] INFO (AccountCreationState) ⏳ Starting Account Creation state in synchronous mode ...
-[Hedera-Local-Node] INFO (AccountCreationState) |-----------------------------------------------------------------------------------------|
-[Hedera-Local-Node] INFO (AccountCreationState) |-----------------------------| Accounts list (ECDSA keys) |----------------------------|
-[Hedera-Local-Node] INFO (AccountCreationState) |-----------------------------------------------------------------------------------------|
-[Hedera-Local-Node] INFO (AccountCreationState) |    id    |                            private key                            |  balance |
-[Hedera-Local-Node] INFO (AccountCreationState) |-----------------------------------------------------------------------------------------|
-[Hedera-Local-Node] INFO (AccountCreationState) | 0.0.1002 - 0x7f109a9e3b0d8ecfba9cc23a3614433ce0fa7ddcc80f2a8f10b222179a5a80d6 - 10000 ℏ |
-[Hedera-Local-Node] INFO (AccountCreationState) | 0.0.1003 - 0x6ec1f2e7d126a74a1d2ff9e1c5d90b92378c725e506651ff8bb8616a5c724628 - 10000 ℏ |
-[Hedera-Local-Node] INFO (AccountCreationState) | 0.0.1004 - 0xb4d7f7e82f61d81c95985771b8abf518f9328d019c36849d4214b5f995d13814 - 10000 ℏ |
-[Hedera-Local-Node] INFO (AccountCreationState) | 0.0.1005 - 0x941536648ac10d5734973e94df413c17809d6cc5e24cd11e947e685acfbd12ae - 10000 ℏ |
-[Hedera-Local-Node] INFO (AccountCreationState) | 0.0.1006 - 0x5829cf333ef66b6bdd34950f096cb24e06ef041c5f63e577b4f3362309125863 - 10000 ℏ |
-[Hedera-Local-Node] INFO (AccountCreationState) | 0.0.1007 - 0x8fc4bffe2b40b2b7db7fd937736c4575a0925511d7a0a2dfc3274e8c17b41d20 - 10000 ℏ |
-[Hedera-Local-Node] INFO (AccountCreationState) | 0.0.1008 - 0xb6c10e2baaeba1fa4a8b73644db4f28f4bf0912cceb6e8959f73bb423c33bd84 - 10000 ℏ |
-[Hedera-Local-Node] INFO (AccountCreationState) | 0.0.1009 - 0xfe8875acb38f684b2025d5472445b8e4745705a9e7adc9b0485a05df790df700 - 10000 ℏ |
-[Hedera-Local-Node] INFO (AccountCreationState) | 0.0.1010 - 0xbdc6e0a69f2921a78e9af930111334a41d3fab44653c8de0775572c526feea2d - 10000 ℏ |
-[Hedera-Local-Node] INFO (AccountCreationState) | 0.0.1011 - 0x3e215c3d2a59626a669ed04ec1700f36c05c9b216e592f58bbfd3d8aa6ea25f9 - 10000 ℏ |
-[Hedera-Local-Node] INFO (AccountCreationState) |-----------------------------------------------------------------------------------------|
-[Hedera-Local-Node] INFO (AccountCreationState) |--------------------------------------------------------------------------------------------------------------------------------------|
-[Hedera-Local-Node] INFO (AccountCreationState) |------------------------------------------------| Accounts list (Alias ECDSA keys) |--------------------------------------------------|
-[Hedera-Local-Node] INFO (AccountCreationState) |--------------------------------------------------------------------------------------------------------------------------------------|
-[Hedera-Local-Node] INFO (AccountCreationState) |    id    |               public address               |                             private key                            | balance |
-[Hedera-Local-Node] INFO (AccountCreationState) |--------------------------------------------------------------------------------------------------------------------------------------|
-[Hedera-Local-Node] INFO (AccountCreationState) | 0.0.1012 - 0x67d8d32e9bf1a9968a5ff53b87d777aa8ebbee69 - 0x105d050185ccb907fba04dd92d8de9e32c18305e097ab41dadda21489a211524 - 10000 ℏ |
-.....
-[Hedera-Local-Node] INFO (AccountCreationState) |-----------------------------------------------------------------------------------------|
-[Hedera-Local-Node] INFO (AccountCreationState) [✔︎] Accounts created succefully!
-[Hedera-Local-Node] INFO (CleanUpState) ⏳ Initiating clean up procedure. Trying to revert unneeded changes to files...
-[Hedera-Local-Node] INFO (CleanUpState) [✔︎] Clean up of consensus node properties finished.
-[Hedera-Local-Node] INFO (CleanUpState) [✔︎] Clean up of mirror node properties finished.
+$ hedera stop
+[Hedera-Local-Node] INFO (StateController) [✔︎] Starting stop procedure!
+[Hedera-Local-Node] INFO (StopState) ⏳ Initiating stop procedure. Trying to stop docker containers and clean up volumes...
+[Hedera-Local-Node] INFO (StopState) ⏳ Stopping the network...
+[Hedera-Local-Node] INFO (StopState) [✔︎] Hedera Local Node was stopped successfully.
 ```
-
-![Running Hedera Node on Terminal](../../.gitbook/assets/01-hedera-local-node-terminal-npm-cli-running.png)
-
-### Other npm commands
-
-* `npm run restart`: restarts the network
-* `npm run stop`: stops the network
-* `npm run generate-accounts`: generates new accounts—network must be running
 
 ## Verify Local Node is Running
 
@@ -194,15 +194,6 @@ curl http://localhost:7546/ \
 **Error: Node cannot start properly because necessary ports are in use!**
 
 ```js
-hedera-local-node % npm run start -- -d
-
-> @hashgraph/hedera-local@2.26.2 start
-> npm run build && node ./build/index.js start -d
-
-
-> @hashgraph/hedera-local@2.26.2 build
-> rimraf ./build && tsc
-
 [Hedera-Local-Node] INFO (StateController) [✔︎] Starting start procedure!
 [Hedera-Local-Node] INFO (InitState) ⏳ Making sure that Docker is started and it is correct version...
 [Hedera-Local-Node] INFO (DockerService) ⏳ Checking docker compose version...
@@ -219,9 +210,11 @@ hedera-local-node % npm run start -- -d
 [Hedera-Local-Node] ERROR (DockerService) [✘] [✘] Node cannot start properly because necessary ports are in use!
 ```
 
+This error commonly occurs when you already have a local node running, for example, if you've forgotten to stop a local node before starting a new one.
+
 To resolve this error, terminate any existing local node Docker processes as well as any other processes bound to these port numbers before attempting to run the node. You can accomplish this by running `docker compose down -v`, `git clean -xfd`, and `git reset --hard`.
 
-Alternatively, instead of starting a new instance of the network, you can use the `npm run generate-accounts` command to generate new accounts for the network that's already running.
+Alternatively, instead of starting a new instance of the network, you can use the `hedera generate-accounts` command to generate new accounts for the network that's already running.
 
 ## Next Steps
 
