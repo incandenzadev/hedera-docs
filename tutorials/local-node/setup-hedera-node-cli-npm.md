@@ -32,17 +32,17 @@ In **Settings > Advanced**, make sure that **Allow the default Docker sockets to
 
 ### Install the `hedera-local` CLI Tool
 
-To run a local node using the `hedera-local` CLI tool, you can either install it globally via npm, or else run it locally from a clone of [the `hedera-local-node` GitHub repo](https://github.com/hashgraph/hedera-local-node). The [npm installation](#global-npm-installation) is generally recommended for most users unless you specifically need to test the latest changes to the repo, in which case you should follow the [local installation instructions](#local-development-installation).
+To run a local node using the `hedera-local` CLI tool, you can either install it globally via npm, or else run it locally from a clone of [the `hedera-local-node` GitHub repo](https://github.com/hashgraph/hedera-local-node). The [global npm installation](#global-npm-installation) is generally recommended for most users unless you specifically need to test the latest changes to the repo, in which case you should follow the [local development installation](#local-development-installation) instructions.
 
 #### Global npm Installation
 
-Run the following command to install the `@hashgraph/hedera-local` CLI tool:
+Run the following command to install the `@hashgraph/hedera-local` CLI tool globally:
 
 ```bash
 npm install @hashgraph/hedera-local -g
 ```
 
-Now you can use [the `hedera` commands](#hedera-commands) when [running your node](#running-the-node).
+Now you can use [the `hedera` commands](#hedera-commands) from any starting place in your terminal when [running your node](#running-the-node).
 
 #### Local Development Installation
 
@@ -59,11 +59,11 @@ Install the necessary dependencies in the `hedera-local-node` directory:
 npm install && npm install -g
 ```
 
-Now you can use `npm run start`, `npm run restart`, and `npm run stop` to start, restart, and stop the node, respectively.
+Now you can use `npm run start`, `npm run stop`, and `npm run restart` within the project directory to start, stop, and restart the node, respectively.
 
 ## Running the Node
 
-Note: This section assumes you've [installed `hedera-local` globally via npm](#global-npm-installation). If you're running it from a local repo, you must replace `hedera *` with `npm run *` and add `--` before any optional flags. For example, `hedera start -d` would be `npm run start -- -d`.
+Note: This section assumes you've [installed `hedera-local` globally](#global-npm-installation). If you're running it from a local repo, you must replace `hedera *` with `npm run *` and add `--` before any optional flags. For example, `hedera start -d` would be `npm run start -- -d`.
 
 ### `hedera` Commands
 
@@ -115,11 +115,7 @@ You should see the following response in the terminal:
 
 #### Stop the Node
 
-To terminate your local node, run:
-
-```bash
-hedera stop
-```
+Run `hedera stop` to stop the local node.
 
 You should see the following response in the terminal:
 
