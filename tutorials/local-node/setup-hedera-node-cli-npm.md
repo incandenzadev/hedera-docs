@@ -1,4 +1,4 @@
-# Set Up a Hedera Local Node using the npm CLI
+# Set Up a Hedera Local Node Using the `hedera-local` CLI
 
 This tutorial demonstrates how to set up and run a Hedera node locally using the [@hashgraph/hedera-local](https://www.npmjs.com/package/@hashgraph/hedera-local) npm command line interface (CLI) tool. This tool includes the necessary definitions for Docker Compose and abstracts away the need to interact directly with Docker when running your node. This is the recommended method for standing up a local node, but you can also run a local node [manually with Docker](https://www.youtube.com/watch?v=KOhzu6ftmbY) or [in a cloud development environment](https://docs.hedera.com/hedera/tutorials/local-node/how-to-run-hedera-local-node-in-a-cloud-development-environment-cde) (CDE).
 
