@@ -227,7 +227,7 @@ Want to learn how to deploy smart contracts on Hedera? Visit the guide on how to
 
 * Set and Run a Hedera Node using the [Local Hedera Package](https://github.com/hashgraph/hedera-local-node?tab=readme-ov-file#using-hedera-local).
 * [Setup node using Docker CLI](https://github.com/hashgraph/hedera-local-node?tab=readme-ov-file#docker).
-* Use [local network variables](https://github.com/hashgraph/hedera-local-node?tab=readme-ov-file#network-variables) to interact with Consensus and Mirror Nodes
+* Use [local network variables](https://github.com/hashgraph/hedera-local-node?tab=readme-ov-file#network-variables) to interact with Consensus and Mirror Nodes.
 * Using [Grafana and Prometheus Endpoints](https://github.com/hashgraph/hedera-local-node?tab=readme-ov-file#grafana--prometheus).
 
 <table data-card-size="large" data-view="cards"><thead><tr><th align="center"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td align="center"><p>Writer: Owanate, Technical Writer</p><p><a href="https://github.com/owans">GitHub</a> | <a href="https://medium.com/@owanateamachree">Medium</a></p></td><td><a href="https://medium.com/@owanateamachree">https://medium.com/@owanateamachree</a></td></tr><tr><td align="center"><p>Editor: Krystal, Technical Writer</p><p><a href="https://github.com/theekrystallee">GitHub</a> | <a href="https://twitter.com/theekrystallee">Twitter</a></p></td><td><a href="https://twitter.com/theekrystallee">https://twitter.com/theekrystallee</a></td></tr></tbody></table>
