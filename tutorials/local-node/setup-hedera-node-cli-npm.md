@@ -7,7 +7,7 @@ This tutorial demonstrates how to set up and run a Hedera node locally using the
 Before continuing, ensure that you have the following software installed:
 
 * [Node.js](https://nodejs.org/) >= v14.x (Check version: `node -v`)
-* npm >= v6.14.17 (Check version: `npm -v`)
+* [npm](https://www.npmjs.com/) >= v6.14.17 (Check version: `npm -v`)
 * [Docker](https://www.docker.com/) >= v20.10.x (Check version: `docker -v`)
 * [Docker Compose](https://docs.docker.com/compose/) >= v2.12.3 (Check version: `docker compose version`)
 
