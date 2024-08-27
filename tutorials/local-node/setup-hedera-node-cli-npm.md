@@ -38,7 +38,7 @@ To run a local node using the `hedera-local` CLI tool, you can either install it
 
 Run the following command to install the `@hashgraph/hedera-local` CLI tool:
 
-```js
+```bash
 npm install @hashgraph/hedera-local -g
 ```
 
@@ -48,14 +48,14 @@ Now you can use [the `hedera` commands](#hedera-commands) when [running your nod
 
 Clone the `hedera-local-node` repo and navigate to the project directory:
 
-```js
+```bash
 git clone https://github.com/hashgraph/hedera-local-node.git 
 cd hedera-local-node
 ```
 
 Install the necessary dependencies in the `hedera-local-node` directory:
 
-```js
+```bash
 npm install && npm install -g
 ```
 
@@ -193,7 +193,7 @@ curl http://localhost:7546/ \
 
 **Error: Node cannot start properly because necessary ports are in use!**
 
-```js
+```bash
 [Hedera-Local-Node] INFO (StateController) [✔︎] Starting start procedure!
 [Hedera-Local-Node] INFO (InitState) ⏳ Making sure that Docker is started and it is correct version...
 [Hedera-Local-Node] INFO (DockerService) ⏳ Checking docker compose version...
