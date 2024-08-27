@@ -15,7 +15,7 @@ Hardware requirements: minimum 16 GB RAM
 
 ## Getting Started
 
-Clone the repo and navigate to the project directory:
+Clone the `hedera-local-node` repo and navigate to the project directory:
 
 ```js
 git clone https://github.com/hashgraph/hedera-local-node.git 
@@ -158,7 +158,7 @@ hedera-local-node % npm run start -- -d
 
 ## Verify Local Node is Running
 
-To verify that your node is running, visit the local mirror node explorer endpoint ([http://localhost:8080/](http://localhost:8080/) in your browser. Select Localnet from the dropdown menu to see the Hedera network transactions on your local device. You can select any of the listed blocks to view the details (Consensus, Block, Transaction Hash, etc) for a particular block.
+To verify that your node is running, visit the local mirror node explorer endpoint ([http://localhost:8080/](http://localhost:8080/) in your browser. Select **Localnet** from the dropdown menu to see the Hedera network transactions on your local device. You can click on any of the transactions to view details such as consensus, block, and transaction hash.
 
 ![Hedera Explorer - View LOCALNET](../../.gitbook/assets/02-hedera-local-node-terminal-view-localnet.png)
 
@@ -219,11 +219,12 @@ hedera-local-node % npm run start -- -d
 [Hedera-Local-Node] ERROR (DockerService) [✘] [✘] Node cannot start properly because necessary ports are in use!
 ```
 
-* **Option 1:** Instead of starting another instance of the network, use the `npm run generate-accounts` to generate new accounts for an already started network.
-* **Option 2:** If you get the above error, ensure that you terminate any existing Docker processes for the local node, and also any other processes that are bound to these port numbers, before running the npm start command. You can run `docker compose down -v`, `git clean -xfd`, `git reset --hard` to fix this.
+To resolve this error, terminate any existing local node Docker processes as well as any other processes bound to these port numbers before attempting to run the node. You can accomplish this by running `docker compose down -v`, `git clean -xfd`, and `git reset --hard`.
+
+Alternatively, instead of starting a new instance of the network, you can use the `npm run generate-accounts` command to generate new accounts for the network that's already running.
 
 ## Next Steps
 
-Want to learn how to deploy smart contracts on Hedera? Visit the guide on how to [Deploy a Smart Contract Using Hardhat and Hedera JSON-RPC Relay](https://docs.hedera.com/hedera/tutorials/smart-contracts/deploy-a-smart-contract-using-hardhat-hedera-json-rpc-relay).
+With your local node up and running, you're now ready to learn how to [deploy a smart contract using Hardhat and Hedera JSON-RPC relay](https://docs.hedera.com/hedera/tutorials/smart-contracts/deploy-a-smart-contract-using-hardhat-hedera-json-rpc-relay).
 
 <table data-card-size="large" data-view="cards"><thead><tr><th align="center"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td align="center"><p>Writer: Owanate, Technical Writer</p><p><a href="https://github.com/owans">GitHub</a> | <a href="https://medium.com/@owanateamachree">Medium</a></p></td><td><a href="https://medium.com/@owanateamachree">https://medium.com/@owanateamachree</a></td></tr><tr><td align="center"><p>Editor: Krystal, Technical Writer</p><p><a href="https://github.com/theekrystallee">GitHub</a> | <a href="https://twitter.com/theekrystallee">Twitter</a></p></td><td><a href="https://twitter.com/theekrystallee">https://twitter.com/theekrystallee</a></td></tr></tbody></table>
