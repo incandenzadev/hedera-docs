@@ -4,8 +4,6 @@ Hedera is an open-source, public, proof-of-stake network. Its network services o
 
 This tutorial demonstrates how to set up and run a Hedera node locally using the [@hashgraph/hedera-local](https://www.npmjs.com/package/@hashgraph/hedera-local) npm command line interface (CLI) tool.
 
-> Already have a preferred cloud service? See [Useful Resources](#useful-resources) for more information on alternative methods for running a Hedera node locally.
-
 ## Prerequisites
 
 Before continuing, ensure that you have the following software installed:
@@ -15,7 +13,7 @@ Before continuing, ensure that you have the following software installed:
 * [Docker](https://www.docker.com/) >= v20.10.x (Check version: `docker -v`)
 * [Docker Compose](https://docs.docker.com/compose/) >= v2.12.3 (Check version: `docker compose version`)
 
-Hardware: minimum 16GB RAM
+Hardware: minimum 16 GB RAM
 
 ## Getting Started
 
@@ -44,9 +42,22 @@ Install the necessary dependencies in the `hedera-local-node` directory:
 npm install && npm install -g
 ```
 
+### Configure Docker
+
+In Docker's **Settings**, make sure that VirtioFS file sharing implementation is selected.
+
+In **Settings > Resources**, ensure the following minimum resources are available:
+
+  - **CPUs:** 6
+  - **Memory:** 8 GB
+  - **Swap:** 1 GB
+  - **Disk Image Size:** 64 GB
+
+In **Settings > Advanced**, make sure that **Allow the default Docker sockets to be used (requires password)** is selected.
+
 ## Running the Node
 
-Make sure Docker is running on your device, then start the local node:
+With Docker running on your device, start the local node:
 
 ```js
 npm run start
@@ -211,23 +222,8 @@ hedera-local-node % npm run start -- -d
 * **Option 1:** Instead of starting another instance of the network, use the `npm run generate-accounts` to generate new accounts for an already started network.
 * **Option 2:** If you get the above error, ensure that you terminate any existing Docker processes for the local node, and also any other processes that are bound to these port numbers, before running the npm start command. You can run `docker compose down -v`, `git clean -xfd`, `git reset --hard` to fix this.
 
-## Useful Terms
-
-For an in-depth explanation of the different terms below, see the [glossary documentation](https://docs.hedera.com/hedera/support-and-community/glossary).
-
-* Accounts list (ED25519 keys)
-* Private keys
-* Public address
-
 ## Next Steps
 
 Want to learn how to deploy smart contracts on Hedera? Visit the guide on how to [Deploy a Smart Contract Using Hardhat and Hedera JSON-RPC Relay](https://docs.hedera.com/hedera/tutorials/smart-contracts/deploy-a-smart-contract-using-hardhat-hedera-json-rpc-relay).
-
-## Useful Resources
-
-* Set and Run a Hedera Node using the [Local Hedera Package](https://github.com/hashgraph/hedera-local-node?tab=readme-ov-file#using-hedera-local).
-* [Setup node using Docker CLI](https://github.com/hashgraph/hedera-local-node?tab=readme-ov-file#docker).
-* Use [local network variables](https://github.com/hashgraph/hedera-local-node?tab=readme-ov-file#network-variables) to interact with Consensus and Mirror Nodes.
-* Using [Grafana and Prometheus Endpoints](https://github.com/hashgraph/hedera-local-node?tab=readme-ov-file#grafana--prometheus).
 
 <table data-card-size="large" data-view="cards"><thead><tr><th align="center"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td align="center"><p>Writer: Owanate, Technical Writer</p><p><a href="https://github.com/owans">GitHub</a> | <a href="https://medium.com/@owanateamachree">Medium</a></p></td><td><a href="https://medium.com/@owanateamachree">https://medium.com/@owanateamachree</a></td></tr><tr><td align="center"><p>Editor: Krystal, Technical Writer</p><p><a href="https://github.com/theekrystallee">GitHub</a> | <a href="https://twitter.com/theekrystallee">Twitter</a></p></td><td><a href="https://twitter.com/theekrystallee">https://twitter.com/theekrystallee</a></td></tr></tbody></table>
