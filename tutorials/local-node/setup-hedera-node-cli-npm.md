@@ -158,7 +158,7 @@ hedera-local-node % npm run start -- -d
 
 ## Verify Local Node is Running
 
-To verify that your node is running, visit the local mirror node explorer endpoint ([http://localhost:8080/](http://localhost:8080/) in your browser. Select **Localnet** from the dropdown menu to see the Hedera network transactions on your local device. You can click on any of the transactions to view details such as consensus, block, and transaction hash.
+To verify that your node is running, visit the local mirror node explorer endpoint at [http://localhost:8080/](http://localhost:8080/) in your browser. Select **Localnet** from the dropdown menu to see the Hedera network transactions on your local device. You can click on any of the transactions to view details such as consensus, block, and transaction hash.
 
 ![Hedera Explorer - View LOCALNET](../../.gitbook/assets/02-hedera-local-node-terminal-view-localnet.png)
 
@@ -189,7 +189,7 @@ curl http://localhost:7546/ \
 
 ## Troubleshooting
 
-The section below details common errors and how to resolve them.
+### Necessary Ports in Use
 
 **Error: Node cannot start properly because necessary ports are in use!**
 
