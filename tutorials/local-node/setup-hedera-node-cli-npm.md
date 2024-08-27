@@ -30,7 +30,7 @@ Install the `@hashgraph/hedera-local` CLI tool globally:
 npm install @hashgraph/hedera-local -g
 ```
 
-> The official npm release may not reflect the most recent changes to the main branch of this repository. It uses a baked-in version of the Docker Compose definitions and will not reflect any local changes made to the repository.
+> Note that the official npm release may not reflect the most recent changes to the main branch of this repository.
 
 ### Install Dependencies
 
@@ -42,7 +42,7 @@ npm install && npm install -g
 
 ### Configure Docker
 
-In Docker's **Settings**, make sure that VirtioFS file sharing implementation is selected.
+Open Docker and navigate to **Settings > General**. Make sure that the VirtioFS file sharing implementation is selected.
 
 In **Settings > Resources**, ensure the following minimum resources are available:
 
@@ -51,7 +51,7 @@ In **Settings > Resources**, ensure the following minimum resources are availabl
   - **Swap:** 1 GB
   - **Disk Image Size:** 64 GB
 
-In **Settings > Advanced**, make sure that **Allow the default Docker sockets to be used (requires password)** is selected.
+In **Settings > Advanced**, make sure that **Allow the default Docker sockets to be used (requires password)** is checked.
 
 ## Running the Node
 
@@ -94,7 +94,9 @@ hedera-local-node % npm run start
 [Hedera-Local-Node] INFO (StartState) ⏳ Starting Hedera Local Node...
 ```
 
-To generate default accounts and start the local node in detached mode, use the command below:
+### Detached Mode
+
+Append the `-- -d` flag to generate default accounts and start the local node in detached mode:
 
 ```js
 npm run start -- -d
@@ -148,11 +150,11 @@ hedera-local-node % npm run start -- -d
 
 ![Running Hedera Node on Terminal](../../.gitbook/assets/01-hedera-local-node-terminal-npm-cli-running.png)
 
-Other npm commands:
+### Other npm commands
 
-* `npm run restart` to restart the network
-* `npm run stop` to stop the network
-* `npm run generate-accounts` to generate new accounts—network must be running first
+* `npm run restart`: restarts the network
+* `npm run stop`: stops the network
+* `npm run generate-accounts`: generates new accounts—network must be running
 
 ## Verify Local Node is Running
 
