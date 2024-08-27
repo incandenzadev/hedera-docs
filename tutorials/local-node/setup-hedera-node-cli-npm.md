@@ -1,8 +1,6 @@
 # Set Up a Hedera Local Node using the npm CLI
 
-Hedera is an open-source, public, proof-of-stake network. Its network services offer low and fixed fees, 10k TPS, and instant transaction finality. Learn more about [the Hedera platform and how it works](https://hedera.com/how-it-works).
-
-This tutorial demonstrates how to set up and run a Hedera node locally using the [@hashgraph/hedera-local](https://www.npmjs.com/package/@hashgraph/hedera-local) npm command line interface (CLI) tool.
+This tutorial demonstrates how to set up and run a Hedera node locally using the [@hashgraph/hedera-local](https://www.npmjs.com/package/@hashgraph/hedera-local) npm command line interface (CLI) tool. This tool includes the necessary definitions for Docker Compose and abstracts away the need to interact directly with Docker when running your node. This is the recommended method for standing up a local node, but you can also run a local node [manually with Docker](https://www.youtube.com/watch?v=KOhzu6ftmbY) or [in a cloud development environment](https://docs.hedera.com/hedera/tutorials/local-node/how-to-run-hedera-local-node-in-a-cloud-development-environment-cde) (CDE).
 
 ## Prerequisites
 
@@ -13,11 +11,11 @@ Before continuing, ensure that you have the following software installed:
 * [Docker](https://www.docker.com/) >= v20.10.x (Check version: `docker -v`)
 * [Docker Compose](https://docs.docker.com/compose/) >= v2.12.3 (Check version: `docker compose version`)
 
-Hardware: minimum 16 GB RAM
+Hardware requirements: minimum 16 GB RAM
 
 ## Getting Started
 
-Clone the repo and navigate to the project directory using the commands below:
+Clone the repo and navigate to the project directory:
 
 ```js
 git clone https://github.com/hashgraph/hedera-local-node.git 
@@ -26,7 +24,7 @@ cd hedera-local-node
 
 ### Install the CLI Tool
 
-Install the `@hashgraph/hedera-local` CLI tool globally by running the following command:
+Install the `@hashgraph/hedera-local` CLI tool globally:
 
 ```js
 npm install @hashgraph/hedera-local -g
