@@ -113,6 +113,24 @@ You should see the following response in the terminal:
 
 ```
 
+### Stop the Node
+
+To terminate your local node, run:
+
+```bash
+hedera stop
+```
+
+You should see the following response in the terminal:
+
+```bash
+$ hedera stop
+[Hedera-Local-Node] INFO (StateController) [✔︎] Starting stop procedure!
+[Hedera-Local-Node] INFO (StopState) ⏳ Initiating stop procedure. Trying to stop docker containers and clean up volumes...
+[Hedera-Local-Node] INFO (StopState) ⏳ Stopping the network...
+[Hedera-Local-Node] INFO (StopState) [✔︎] Hedera Local Node was stopped successfully.
+```
+
 ### Restart the Node
 
 Run `hedera restart` to restart the local node.
@@ -138,24 +156,6 @@ You should see the following response in the terminal:
 [Hedera-Local-Node] INFO (InitState) [✔︎] Needed bootsrap properties were set for this configuration.
 [Hedera-Local-Node] INFO (InitState) [✔︎] Needed mirror node properties were set for this configuration.
 [Hedera-Local-Node] INFO (StartState) ⏳ Starting Hedera Local Node...
-```
-
-### Stop the Node
-
-To terminate your local node, run:
-
-```bash
-hedera stop
-```
-
-You should see the following response in the terminal:
-
-```bash
-$ hedera stop
-[Hedera-Local-Node] INFO (StateController) [✔︎] Starting stop procedure!
-[Hedera-Local-Node] INFO (StopState) ⏳ Initiating stop procedure. Trying to stop docker containers and clean up volumes...
-[Hedera-Local-Node] INFO (StopState) ⏳ Stopping the network...
-[Hedera-Local-Node] INFO (StopState) [✔︎] Hedera Local Node was stopped successfully.
 ```
 
 ## Verify Local Node is Running
@@ -212,7 +212,7 @@ curl http://localhost:7546/ \
 [Hedera-Local-Node] ERROR (DockerService) [✘] [✘] Node cannot start properly because necessary ports are in use!
 ```
 
-This error commonly occurs when you already have a local node running, for example, if you've forgotten to stop a local node before starting a new one.
+This error commonly occurs when you already have a local node running—for example, if you've forgotten to stop a local node before starting a new one.
 
 To resolve this error, terminate any existing local node Docker processes as well as any other processes bound to these port numbers before attempting to run the node. You can accomplish this by running `docker compose down -v`, `git clean -xfd`, and `git reset --hard`.
 
