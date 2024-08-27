@@ -1,6 +1,6 @@
 # Set Up a Hedera Local Node Using the `hedera-local` CLI
 
-This tutorial demonstrates how to set up and run a Hedera node locally using the [@hashgraph/hedera-local](https://www.npmjs.com/package/@hashgraph/hedera-local) npm command line interface (CLI) tool. This tool includes the necessary definitions for Docker Compose and abstracts away the need to interact directly with Docker when running your node. This is the recommended method for standing up a local node, but you can also run a local node [manually with Docker](https://www.youtube.com/watch?v=KOhzu6ftmbY) or [in a cloud development environment](https://docs.hedera.com/hedera/tutorials/local-node/how-to-run-hedera-local-node-in-a-cloud-development-environment-cde) (CDE).
+This tutorial demonstrates how to set up and run a Hedera node locally using the [@hashgraph/hedera-local](https://www.npmjs.com/package/@hashgraph/hedera-local) command line interface (CLI) tool. This tool includes the necessary definitions for Docker Compose and abstracts away the need to interact directly with Docker when running your node. This is the recommended method for standing up a local node, but you can also run a local node [manually with Docker](https://www.youtube.com/watch?v=KOhzu6ftmbY) or [in a cloud development environment](https://docs.hedera.com/hedera/tutorials/local-node/how-to-run-hedera-local-node-in-a-cloud-development-environment-cde) (CDE).
 
 ## Requirements
 
@@ -91,7 +91,7 @@ Options:
 
 See [the project readme](https://github.com/hashgraph/hedera-local-node) for a complete list of options and flags, which are beyond the scope of this introductory tutorial.
 
-### Start the Node
+#### Start the Node
 
 Run `hedera start` to start the local node.
 
@@ -113,7 +113,7 @@ You should see the following response in the terminal:
 
 ```
 
-### Stop the Node
+#### Stop the Node
 
 To terminate your local node, run:
 
@@ -131,7 +131,7 @@ $ hedera stop
 [Hedera-Local-Node] INFO (StopState) [✔︎] Hedera Local Node was stopped successfully.
 ```
 
-### Restart the Node
+#### Restart the Node
 
 Run `hedera restart` to restart the local node.
 
@@ -158,7 +158,7 @@ You should see the following response in the terminal:
 [Hedera-Local-Node] INFO (StartState) ⏳ Starting Hedera Local Node...
 ```
 
-## Verify Local Node is Running
+### Verify Local Node is Running
 
 To verify that your node is running, visit the local mirror node explorer endpoint at [http://localhost:8080/](http://localhost:8080/) in your browser. Select **Localnet** from the dropdown menu to see the Hedera network transactions on your local device. You can click on any of the transactions to view details such as consensus, block, and transaction hash.
 
@@ -166,7 +166,7 @@ To verify that your node is running, visit the local mirror node explorer endpoi
 
 ![Hedera Explorer - View LOCALNET Details](../../.gitbook/assets/03-hedera-local-node-terminal-view-localnet-details.png)
 
-### Send cURL Request to Testnet
+#### Send cURL Request to Testnet
 
 To confirm that you're able to interact with the Hedera Testnet using JSON-RPC, try issuing an `eth_getBlockByNumber` JSON-RPC request.
 
