@@ -32,7 +32,7 @@ In **Settings > Advanced**, make sure that **Allow the default Docker sockets to
 
 ### Install the `hedera-local` CLI Tool
 
-To run a local node using the `hedera-local` CLI tool, you can either install it globally via npm, or else run it locally from a clone of [the `hedera-local-node` GitHub repo](https://github.com/hashgraph/hedera-local-node). The [npm installation](#npm-installation) is generally recommended for most users unless you specifically need to test the latest changes to the repo, in which case you should follow the [local installation instructions](#local-development-installation).
+To run a local node using the `hedera-local` CLI tool, you can either install it globally via npm, or else run it locally from a clone of [the `hedera-local-node` GitHub repo](https://github.com/hashgraph/hedera-local-node). The [npm installation](#global-npm-installation) is generally recommended for most users unless you specifically need to test the latest changes to the repo, in which case you should follow the [local installation instructions](#local-development-installation).
 
 #### Global npm Installation
 
@@ -63,7 +63,7 @@ Now you can use `npm run start`, `npm run restart`, and `npm run stop` to start,
 
 ## Running the Node
 
-Note: This section assumes you've installed `hedera-local` globally via npm. If you're running it from a local repo, you must replace `hedera *` with `npm run *` and add `--` before any optional flags. For example, `hedera start -d` would be `npm run start -- -d`.
+Note: This section assumes you've [installed `hedera-local` globally via npm](#global-npm-installation). If you're running it from a local repo, you must replace `hedera *` with `npm run *` and add `--` before any optional flags. For example, `hedera start -d` would be `npm run start -- -d`.
 
 ### `hedera` Commands
 
@@ -88,6 +88,8 @@ Options:
   --help     Show help                                                 [boolean]
   --version  Show version number                                       [boolean]
 ```
+
+See [the project readme](https://github.com/hashgraph/hedera-local-node) for a complete list of options and flags, which are beyond the scope of this introductory tutorial.
 
 ### Start the Node
 
